@@ -1,16 +1,13 @@
 def analyze_query_extraction(result):
-    if result.documents:
-        print(result.documents)
-
     print("Here are extra fields in the result:\n")
     if result.documents:
         for document in result.documents:
-            if document.fields and document.fields["FirstName"]:
-                print(f"First Name: {document.fields['FirstName'].value_string}")
-            if document.fields and document.fields["LastName"]:
-                print(f"Last Name: {document.fields['LastName'].value_string}")
-            if document.fields and document.fields["Company"]:
-                print(f"Company: {document.fields['Company'].value_string}")
+            if document.fields and document.fields["firstname"]:
+                print(f"First Name: {document.fields['firstname'].value_string}")
+            if document.fields and document.fields["lastname"]:
+                print(f"Last Name: {document.fields['lastname'].value_string}")
+            if document.fields and document.fields["company"]:
+                print(f"Company: {document.fields['company'].value_string}")
 
 def analyze_barcode(result):
     for page in result.pages:
@@ -44,25 +41,23 @@ def analyze_layout():
 
     document_analysis_client = DocumentIntelligenceClient(endpoint, credential)
     
-    from azure.ai.documentintelligence.models import AnalyzeDocumentRequest, AnalyzeResult, DocumentAnalysisFeature
+    from azure.ai.documentintelligence.models import AnalyzeDocumentRequest, AnalyzeResult
+    from azure.ai.documentintelligence.models import DocumentAnalysisFeature
     
     # Analyze a document at a URL:
     docUrl = "https://ziggyzuluetastorage01.blob.core.windows.net/documents/02 - Sample Document Analysis.pdf"
     poller = document_analysis_client.begin_analyze_document(
         "prebuilt-layout",
         AnalyzeDocumentRequest(url_source=docUrl),
-        features={DocumentAnalysisFeature.QUERY_FIELDS, DocumentAnalysisFeature.BARCODES},    # Specify which add-on capabilities to enable.
-        query_fields=["FirstName", "LastName", "Company"],  # Set the features and provide a comma-separated list of field names.
+        #features={DocumentAnalysisFeature.QUERY_FIELDS},
+        features={DocumentAnalysisFeature.QUERY_FIELDS, DocumentAnalysisFeature.BARCODES},
+        query_fields=["firstname", "lastname", "company"],  # Set the features and provide a comma-separated list of field names.
     )  
 
     result: AnalyzeResult = poller.result()    
     analyze_query_extraction(result)
-    #analyze_barcode(result)
+    analyze_barcode(result)
     
    
-
-
-
-
 if __name__ == "__main__":
     analyze_layout()
