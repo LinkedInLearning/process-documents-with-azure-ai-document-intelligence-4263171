@@ -19,7 +19,7 @@ document_analysis_client = DocumentIntelligenceClient(endpoint, credential)
 from azure.ai.documentintelligence.models import AnalyzeDocumentRequest, AnalyzeResult, ContentFormat
     
 # GET NORMAL OUTPUT
-docUrl = "https://ziggyzuluetastorage01.blob.core.windows.net/documents/02 - Sample Document Analysis.pdf"
+docUrl = ""
 poller = document_analysis_client.begin_analyze_document(
     "prebuilt-layout",
     AnalyzeDocumentRequest(url_source=docUrl)

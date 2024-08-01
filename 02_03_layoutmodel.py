@@ -35,8 +35,8 @@ def analyze_pages(result):
     for page in result.pages:
         print(f"----Analyzing layout from page #{page.page_number}----")
         print(f"Page has width: {page.width} and height: {page.height}, measured with unit: {page.unit}")
-        #display_word_collections(page)
-        #display_selectionMarks_collections(page)
+        display_word_collections(page)
+        display_selectionMarks_collections(page)
         display_lines_collections(page)
 
 # analyze paragraphs collection
@@ -103,7 +103,7 @@ def analyze_layout():
     from azure.ai.documentintelligence.models import AnalyzeDocumentRequest, AnalyzeResult
     
     # Analyze a document at a URL:
-    docUrl = "https://ziggyzuluetastorage01.blob.core.windows.net/documents/02 - Sample Document Analysis.pdf"
+    docUrl = ""
     poller = document_analysis_client.begin_analyze_document(
         "prebuilt-layout",
         AnalyzeDocumentRequest(url_source=docUrl)
@@ -118,11 +118,11 @@ def analyze_layout():
     result: AnalyzeResult = poller.result()    
     
     #print(result)
-    #analyze_pages(result)
-    #analyze_paragraphs(result)
-    #analyze_tables(result)
-    #analyze_styles(result)
-    #analyze_figures(result)
+    analyze_pages(result)
+    analyze_paragraphs(result)
+    analyze_tables(result)
+    analyze_styles(result)
+    analyze_figures(result)
 
 
 

@@ -204,7 +204,7 @@ def analyze_document():
     from azure.ai.documentintelligence.models import DocumentAnalysisFeature
     
     # Analyze a document at a URL:
-    docUrl = "https://ziggyzuluetastorage01.blob.core.windows.net/documents/02 - invoice_sample.png"
+    docUrl = ""
     poller = document_analysis_client.begin_analyze_document(
         "prebuilt-invoice",
         AnalyzeDocumentRequest(url_source=docUrl),

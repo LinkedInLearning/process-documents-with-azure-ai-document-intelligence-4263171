@@ -45,9 +45,9 @@ def analyze_document():
     from azure.ai.documentintelligence.models import AnalyzeDocumentRequest, AnalyzeResult, DocumentAnalysisFeature
     
     # Analyze a document at a URL:
-    docUrl = "https://ziggyzuluetastorage01.blob.core.windows.net/documents/04_04 - passport sample.jpg"
+    docUrl = ""
     poller = document_analysis_client.begin_analyze_document(
-        "composed-model-id",
+        "composed-model-id", #enter composed model id here
         AnalyzeDocumentRequest(url_source=docUrl)
     )  
 

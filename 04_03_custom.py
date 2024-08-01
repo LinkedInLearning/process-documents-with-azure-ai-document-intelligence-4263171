@@ -37,9 +37,9 @@ def analyze_document():
     from azure.ai.documentintelligence.models import DocumentAnalysisFeature
     
     # Analyze a document at a URL:
-    docUrl = "https://ziggyzuluetastorage01.blob.core.windows.net/documents/04 - consent-form-test-document.pdf"
+    docUrl = ""
     poller = document_analysis_client.begin_analyze_document(
-        "linkedin-covid-template",
+        "linkedin-covid-template", #enter custom model id here
         AnalyzeDocumentRequest(url_source=docUrl)
     )  
 

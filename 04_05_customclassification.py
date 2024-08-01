@@ -93,9 +93,9 @@ def analyze_document():
     from azure.ai.documentintelligence.models import ClassifyDocumentRequest, AnalyzeResult, AnalyzeDocumentRequest
     
     # Analyze a document at a URL:
-    docUrl = "https://ziggyzuluetastorage01.blob.core.windows.net/documents/04_05 - Custom Classification Sample 01.pdf"
+    docUrl = ""
     poller = document_analysis_client.begin_classify_document(
-        "customclassifier01",
+        "customclassifier01", #enter custom classification model id here
         ClassifyDocumentRequest(url_source=docUrl),
         split="auto"
     )  
