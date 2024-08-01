@@ -9,6 +9,7 @@ Sample documents are available in the sampledocs folder. They can be used to tes
 
 ## Exercise Forms
 The Covid consent forms for the exercise is located in the exercisedata folder.
+instructions.md - exercise instructions
 trainingdata folder - will contain the training files
 testdata folder - will contain the test file
 
